@@ -4,8 +4,15 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { EmblaCarouselReact } from "embla-carousel-react";
 
 const Index = () => {
+  const images = [
+    "https://via.placeholder.com/800x400?text=Image+1",
+    "https://via.placeholder.com/800x400?text=Image+2",
+    "https://via.placeholder.com/800x400?text=Image+3",
+  ];
+
   return (
     <div className="h-screen w-screen flex items-center justify-center bg-gray-100">
       <Card className="w-full max-w-lg mx-auto shadow-lg">
@@ -34,6 +41,15 @@ const Index = () => {
           </div>
         </CardContent>
       </Card>
+      <div className="w-full max-w-lg mx-auto mt-8">
+        <EmblaCarouselReact>
+          {images.map((src, index) => (
+            <div key={index} className="embla__slide">
+              <img src={src} alt={`Slide ${index + 1}`} className="w-full h-auto" />
+            </div>
+          ))}
+        </EmblaCarouselReact>
+      </div>
     </div>
   );
 };
